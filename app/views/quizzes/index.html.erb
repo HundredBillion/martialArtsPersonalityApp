@@ -1,0 +1,9 @@
+<div class="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+  <%= turbo_frame_tag "quiz-container", class: "w-full max-w-md bg-white rounded-lg shadow p-6 mx-4" do %>
+    <h1 class="text-2xl font-bold mb-4">Martial Arts Personality Quiz</h1>
+    <p class="text-gray-600 mb-6">Answer 18 quick statements to find out whether you're a Warrior, Athlete, or Artist.</p>
+    <div class="flex gap-2">
+      <a href="<%= quiz_start_path %>" class="btn-primary w-full">Start Quiz</a>
+    </div>
+  <% end %>
+</div>
