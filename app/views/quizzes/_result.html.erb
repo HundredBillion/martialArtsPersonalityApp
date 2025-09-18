@@ -1,0 +1,32 @@
+<h2 class="text-2xl font-bold mb-4">Your Results</h2>
+
+<% safe_results = @results || (@submission.result_payload || {}) %>
+<% scores = safe_results[:scores] || safe_results['scores'] || {} %>
+<% percentages = safe_results[:percentages] || safe_results['percentages'] || {} %>
+
+<div class="space-y-4 mb-4">
+  <% ['warrior','athlete','artist'].each do |p| %>
+    <div class="p-3 rounded border">
+      <div class="flex justify-between items-center">
+        <div class="font-semibold capitalize"><%= p %></div>
+        <div class="text-sm text-gray-600"><%= percentages[p].to_f %>%</div>
+      </div>
+      <div class="h-2 bg-gray-100 rounded mt-2">
+        <div style="width: <%= percentages[p].to_f %>%" class="h-2 bg-blue-400 rounded"></div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="mt-4">
+  <% primary = @submission.result_primary.presence || safe_results[:primary] || safe_results['primary'] %>
+  <p class="text-lg">You are primarily: <strong class="capitalize"><%= primary %></strong></p>
+  <div class="mt-3 text-gray-700"><%= simple_format(@submission.description_for(primary)) %></div>
+</div>
+
+<div class="mt-6 flex gap-2">
+  <form action="<%= quiz_reset_path %>" method="post" class="w-full">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <button type="submit" class="w-full btn-secondary">Take Again</button>
+  </form>
+</div>
