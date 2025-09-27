@@ -9,13 +9,27 @@ class QuizzesController < ApplicationController
   def start
     @submission = Submission.create!
     session[:submission_id] = @submission.id
+    # Clear any existing randomized question order for fresh start
+    session[:randomized_question_ids] = nil
     redirect_to quiz_question_path(pos: 1)
   end
 
   # Render a single question for the given position
   def question
     pos = (params[:pos] || 1).to_i
-    @question = Question.find_by(position: pos)
+    
+    # Get or create randomized question order for this submission
+    randomized_questions = get_randomized_question_order
+    
+    # Check if we've reached the end of questions
+    if pos > randomized_questions.length
+      redirect_to quiz_result_path and return
+    end
+    
+    # Get the question at this position in the randomized order
+    question_id = randomized_questions[pos - 1] # pos is 1-indexed, array is 0-indexed
+    @question = Question.find_by(id: question_id)
+    
     if @question.nil?
       redirect_to quiz_result_path and return
     end
@@ -42,11 +56,16 @@ class QuizzesController < ApplicationController
       @submission.responses.create!(question: question, value: value)
     end
 
-    # Next question or results
-    next_q = Question.find_by(position: question.position + 1)
-    if next_q
-      redirect_to quiz_question_path(pos: next_q.position)
+    # Get current position in randomized sequence and move to next
+    randomized_questions = get_randomized_question_order
+    current_index = randomized_questions.index(question.id)
+    
+    if current_index && current_index < randomized_questions.length - 1
+      # Move to next question in randomized sequence
+      next_pos = current_index + 2 # +2 because pos is 1-indexed
+      redirect_to quiz_question_path(pos: next_pos)
     else
+      # We've reached the end of questions
       @submission.compute_results!
       redirect_to quiz_result_path
     end
@@ -70,6 +89,8 @@ class QuizzesController < ApplicationController
     end
     new_sub = Submission.create!
     session[:submission_id] = new_sub.id
+    # Clear the randomized question order to get a new random sequence
+    session[:randomized_question_ids] = nil
     redirect_to quiz_question_path(pos: 1)
   end
 
@@ -83,5 +104,14 @@ class QuizzesController < ApplicationController
       @submission = Submission.create!
       session[:submission_id] = @submission.id
     end
+  end
+
+  def get_randomized_question_order
+    # Store randomized question order in session to maintain consistency
+    unless session[:randomized_question_ids]
+      all_question_ids = Question.pluck(:id)
+      session[:randomized_question_ids] = all_question_ids.shuffle
+    end
+    session[:randomized_question_ids]
   end
 end
