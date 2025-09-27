@@ -24,6 +24,9 @@ Rails.application.configure do
   else
     config.action_controller.perform_caching = false
   end
+  
+  # Always enable the public file server for Propshaft in development
+  config.public_file_server.enabled = true
 
   # Change to :null_store to avoid any caching.
   config.cache_store = :memory_store
