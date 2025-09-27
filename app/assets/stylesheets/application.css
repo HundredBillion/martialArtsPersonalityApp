@@ -12,6 +12,7 @@
 .btn-primary {
 	background-color: hsl(218, 23%, 23%); /* A dark grey with a hint of blue */
 	color: #ffffff;
+	border-radius: 0;
 	padding: 0.5rem 1rem;
 }
 
