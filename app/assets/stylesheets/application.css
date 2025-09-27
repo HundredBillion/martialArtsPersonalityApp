@@ -23,14 +23,14 @@
 }
 
 .home-bg-image {
-	background-image: url('homeBackground.png');
+	background-image: url(<%= asset_path 'homeBackground.png' %>);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 }
 
 .quiz-bg-image {
-	background-image: url('quizBackground.png');
+	background-image: url(<%= asset_path 'quizBackground.png' %>);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
