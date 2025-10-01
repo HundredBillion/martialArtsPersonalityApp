@@ -1,5 +1,6 @@
-<div class="min-h-screen quiz-bg-image bg-gray-50 flex items-center justify-center p-4">
-  <%= turbo_frame_tag "quiz-container", class: "w-full max-w-md bg-white bg-opacity-80 shadow p-6 mx-4" do %>
+<div class="min-h-screen quiz-bg-image bg-gray-50 flex items-center justify-center p-4 relative">
+  <!-- Quiz Container (on top of image) -->
+  <%= turbo_frame_tag "quiz-container", class: "w-full max-w-md bg-white bg-opacity-90 shadow p-6 mx-4 relative z-10" do %>
     <%= render partial: 'question', locals: { question: @question } %>
   <% end %>
 </div>

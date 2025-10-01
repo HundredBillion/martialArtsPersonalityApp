@@ -24,14 +24,14 @@
 }
 
 .home-bg-image {
-	background-image: url('homeBackground.png');
+	background-image: url('homeBackground.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 }
 
 .quiz-bg-image {
-	background-image: url('quizBackground.png');
+	background-image: url('quizBackground.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
