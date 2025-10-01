@@ -30,6 +30,13 @@
 	background-repeat: no-repeat;
 }
 
+.result-bg-image {
+	background-image: url('resultImage.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
 .quiz-bg-image {
 	background-image: url('quizBackground.jpg');
 	background-size: cover;
