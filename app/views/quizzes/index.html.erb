@@ -1,5 +1,5 @@
 <div class="min-h-screen home-bg-image bg-gray-50 flex flex-col items-center p-4 relative">
-  <%= image_tag "fighterProfile.png", class: "md:max-w-[50%] mb-12 mt-4" %>
+  <%= image_tag "fighterProfile.png", class: "md:max-w-[45%] mb-12 mt-4" %>
   <%= turbo_frame_tag "quiz-container", class: "w-full max-w-md bg-white bg-opacity-90 shadow p-6 mx-4 mb-64 my-auto justify-center" do %>
     <h1 class="text-2xl font-bold mb-4 text-center">Martial Arts Personality Quiz</h1>
     <p class="text-gray-600 mb-6 text-center">Answer 18 quick statements to find out whether you're a Warrior, Athlete, or Artist.</p>
@@ -7,7 +7,7 @@
       <a href="<%= quiz_start_path %>" class="btn-primary w-full text-center">Start Quiz</a>
     </div>
   <% end %>
-  <div class="fixed bottom-0 inset-x-0 px-7 pb-6 flex flex-col">
+  <div class="fixed bottom-0 inset-x-0 px-1 md:px-7 pb-6 flex flex-col">
     <%= image_tag "footerTag.png", class: "w-full" %>
     <%= image_tag "footerTag2.png", class: "w-full" %>
   </div>
