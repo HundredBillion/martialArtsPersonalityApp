@@ -1,9 +1,9 @@
 class Question < ApplicationRecord
   # Simple integer mapping instead of ActiveRecord::Enum to avoid enum initialization issues.
   PERSONALITIES = {
-    0 => 'warrior',
-    1 => 'athlete',
-    2 => 'artist'
+    0 => "warrior",
+    1 => "athlete",
+    2 => "artist"
   }.freeze
 
   validates :text, presence: true

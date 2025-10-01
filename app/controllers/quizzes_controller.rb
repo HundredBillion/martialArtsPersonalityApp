@@ -1,5 +1,5 @@
 class QuizzesController < ApplicationController
-  before_action :set_submission, only: [:question, :respond, :result, :reset]
+  before_action :set_submission, only: [ :question, :respond, :result, :reset ]
 
   def index
     # intro / start page
@@ -17,24 +17,24 @@ class QuizzesController < ApplicationController
   # Render a single question for the given position
   def question
     pos = (params[:pos] || 1).to_i
-    
+
     # Get or create randomized question order for this submission
     randomized_questions = get_randomized_question_order
-    
+
     # Check if we've reached the end of questions
     if pos > randomized_questions.length
       redirect_to quiz_result_path and return
     end
-    
+
     # Get the question at this position in the randomized order
     question_id = randomized_questions[pos - 1] # pos is 1-indexed, array is 0-indexed
     @question = Question.find_by(id: question_id)
-    
+
     if @question.nil?
       redirect_to quiz_result_path and return
     end
 
-    render 'question', layout: 'application'
+    render "question", layout: "application"
   end
 
   # Accept an answer and show next question or results
@@ -59,7 +59,7 @@ class QuizzesController < ApplicationController
     # Get current position in randomized sequence and move to next
     randomized_questions = get_randomized_question_order
     current_index = randomized_questions.index(question.id)
-    
+
     if current_index && current_index < randomized_questions.length - 1
       # Move to next question in randomized sequence
       next_pos = current_index + 2 # +2 because pos is 1-indexed
@@ -75,10 +75,10 @@ class QuizzesController < ApplicationController
   def result
     @submission = Submission.find_by(id: session[:submission_id])
     unless @submission
-      redirect_to root_path, alert: 'No active quiz found. Start a new quiz.' and return
+      redirect_to root_path, alert: "No active quiz found. Start a new quiz." and return
     end
     @submission.compute_results! unless @submission.result_payload.present?
-    render 'result', layout: 'application'
+    render "result", layout: "application"
   end
 
   # Reset current quiz: create a fresh submission and store id in session

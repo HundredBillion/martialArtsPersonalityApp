@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   root "quizzes#index"
 
   # Session-only quiz endpoints (no :id in the URL)
-  get  '/quiz/start',    to: 'quizzes#start',   as: :quiz_start
-  get  '/quiz/question', to: 'quizzes#question', as: :quiz_question
-  post '/quiz/respond',  to: 'quizzes#respond',  as: :quiz_respond
-  get  '/quiz/result',   to: 'quizzes#result',   as: :quiz_result
-  post '/quiz/reset',    to: 'quizzes#reset',    as: :quiz_reset
+  get  "/quiz/start",    to: "quizzes#start",   as: :quiz_start
+  get  "/quiz/question", to: "quizzes#question", as: :quiz_question
+  post "/quiz/respond",  to: "quizzes#respond",  as: :quiz_respond
+  get  "/quiz/result",   to: "quizzes#result",   as: :quiz_result
+  post "/quiz/reset",    to: "quizzes#reset",    as: :quiz_reset
 end

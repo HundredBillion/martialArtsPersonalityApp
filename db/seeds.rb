@@ -33,10 +33,10 @@ seeds << { text: "Everyone learns the same moves. Not everyone makes them their 
 seeds << { text: "I read the other person and create what comes next.", personality: :artist, position: 18 }
 
 seeds.each do |s|
-	mapping = { warrior: 0, athlete: 1, artist: 2 }
-	Question.find_or_create_by!(position: s[:position]) do |q|
-		q.text = s[:text]
-		q.personality = mapping[s[:personality]]
-	end
+  mapping = { warrior: 0, athlete: 1, artist: 2 }
+  Question.find_or_create_by!(position: s[:position]) do |q|
+    q.text = s[:text]
+    q.personality = mapping[s[:personality]]
+  end
 end
 #   end

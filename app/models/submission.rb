@@ -23,7 +23,7 @@ class Submission < ApplicationRecord
   end
 
   PERSONALITY_DESCRIPTIONS = {
-    'warrior' => <<~WAR.strip,
+    "warrior" => <<~WAR.strip,
       You’re a Warrior
 
       You have a warrior spirit and an unbreakable will. You don’t just show up for the fight — you become the fight. When others fold, you rise. When you're hurt, you don’t slow down — you get sharper. Pain doesn’t break you; it builds you.
@@ -32,7 +32,7 @@ class Submission < ApplicationRecord
 
       You are fueled by resolve, sharpened by adversity, and carried by a refusal to quit. You don't just fight to survive. You fight to finish.
     WAR
-    'athlete' => <<~ATH.strip,
+    "athlete" => <<~ATH.strip,
       The Athlete
 
       You’re a student of the game — calm under pressure, exact in movement, and relentless in preparation. You value precision, accuracy, and repeatable results. You don’t just train hard — you train smart, using discipline, data, and experience to build technical mastery. You create a game plan and execute it with intention and control.
@@ -41,7 +41,7 @@ class Submission < ApplicationRecord
 
       You work.
     ATH
-    'artist' => <<~ART.strip,
+    "artist" => <<~ART.strip
       You don’t just fight — you create. For you, combat isn’t just about winning. It’s about how you win. You move differently, think differently, and constantly adapt. You don’t show up with a script — you build the fight in real time based on what you see, feel, and read in your opponent.
 
       You’re drawn to the creativity within chaos. While others repeat what they’ve been taught, you experiment. You find openings where others don’t. You use movement like a magic trick — not to show off, but to surprise, confuse, and ultimately break through.
@@ -54,7 +54,7 @@ class Submission < ApplicationRecord
     return "" unless personality_key
     key = personality_key.to_s
     # If it's a tie like 'artist-warrior', prefer the first personality's description
-    primary_key = key.include?('-') ? key.split('-').first : key
+    primary_key = key.include?("-") ? key.split("-").first : key
     PERSONALITY_DESCRIPTIONS[primary_key] || ""
   end
 end
