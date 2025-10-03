@@ -78,6 +78,21 @@ class QuizzesController < ApplicationController
       redirect_to root_path, alert: "No active quiz found. Start a new quiz." and return
     end
     @submission.compute_results! unless @submission.result_payload.present?
+    
+    # Set up common variables
+    @safe_results = @submission.result_payload || {}
+    @percentages = @safe_results[:percentages] || @safe_results['percentages'] || {}
+    @sorted_traits = ['warrior','athlete','artist'].sort_by { |p| -@percentages[p].to_f }
+    
+    # Set up trait variables
+    @primary_trait = @sorted_traits[0]
+    @secondary_trait = @sorted_traits[1]
+    @tertiary_trait = @sorted_traits[2]
+    
+    # Determine current trait to display (from URL param or default to primary)
+    @current_trait = params[:trait].present? ? params[:trait] : @primary_trait
+    @trait_rank = @sorted_traits.index(@current_trait)
+    
     render "result", layout: "application"
   end
 
