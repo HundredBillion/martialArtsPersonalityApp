@@ -8,7 +8,7 @@
   <% sorted_traits = ['warrior','athlete','artist'].sort_by { |p| -percentages[p].to_f } %>
   <% sorted_traits.each_with_index do |p, index| %>
     <%= link_to quiz_result_path(trait: p), data: { turbo_frame: "trait_description" },
-        class: "block cursor-pointer hover:bg-gray-50 transition-colors duration-200 p-3 rounded border #{'bg-blue-50 border-blue-300' if index == 0}" do %>
+        class: "block cursor-pointer hover:bg-gray-50 transition-colors duration-200 p-3 rounded border #{'bg-blue-50 border-blue-300' if @current_trait == p}" do %>
       <div class="flex justify-between items-center">
         <div class="font-semibold capitalize flex items-center gap-2">
           <%= p %>
