@@ -1,0 +1,18 @@
+current directory: /home/hundredbillion/Code/martialArtsPersonalityApp/vendor/bundle/ruby/3.4.0/gems/websocket-driver-0.8.0/ext/websocket-driver
+/usr/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/hundredbillion/Code/martialArtsPersonalityApp/vendor/bundle/ruby/3.4.0/gems/websocket-driver-0.8.0/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20251006-31084-fk312y sitelibdir\=./.gem.20251006-31084-fk312y clean
+
+current directory: /home/hundredbillion/Code/martialArtsPersonalityApp/vendor/bundle/ruby/3.4.0/gems/websocket-driver-0.8.0/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20251006-31084-fk312y sitelibdir\=./.gem.20251006-31084-fk312y
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /home/hundredbillion/Code/martialArtsPersonalityApp/vendor/bundle/ruby/3.4.0/gems/websocket-driver-0.8.0/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20251006-31084-fk312y sitelibdir\=./.gem.20251006-31084-fk312y install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20251006-31084-fk312y
+
+current directory: /home/hundredbillion/Code/martialArtsPersonalityApp/vendor/bundle/ruby/3.4.0/gems/websocket-driver-0.8.0/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20251006-31084-fk312y sitelibdir\=./.gem.20251006-31084-fk312y clean
