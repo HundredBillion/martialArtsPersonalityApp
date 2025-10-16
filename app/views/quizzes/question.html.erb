@@ -1,9 +1,9 @@
-<div class="min-h-screen quiz-bg-image bg-gray-50 flex items-center justify-center p-4 relative">
+<div class="min-h-screen quiz-bg-image bg-gray-50 flex flex-col items-center justify-center p-4 relative">
   <!-- Quiz Container (on top of image) -->
   <%= turbo_frame_tag "quiz-container", class: "w-full max-w-md bg-white bg-opacity-90 shadow p-6 mx-4 relative z-10" do %>
     <%= render partial: 'question', locals: { question: @question } %>
   <% end %>
-  <footer class="flex items-center justify-center h-16 text-gray-600 text-sm">
+  <footer class="flex items-center justify-center h-16 text-white text-sm">
        © 2025 Art of Growth. All rights reserved.
   </footer>
 </div>
